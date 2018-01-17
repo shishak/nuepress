@@ -12,6 +12,7 @@ const store = () => new Vuex.Store({
   state: {
     article: null,
     articles: [],
+    autoFetchAPI: 5, // seconds
     page: null,
     authorArticles: [],
     authors: null,

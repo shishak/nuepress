@@ -89,6 +89,15 @@ export default {
   },
 
   methods: {
+    autoFetch () {
+      if (this.$store.state.autoFetchAPI) {
+        setInterval(() => { this.fetchPage() }, this.$store.state.autoFetchAPI * 1000)
+      }
+    },
+    async fetchPage () {
+      let page = await this.$axios.get(`${this.$store.state.wordpressAPI}/wp/v2/pages?slug=${this.$route.params.page}&_embed`)
+      this.$store.commit('setPage', page.data[0])
+    },
     gallery () {
       let galleries = document.querySelectorAll('.content > .gallery')
 
@@ -104,6 +113,7 @@ export default {
 
   mounted () {
     this.gallery()
+    this.autoFetch()
   }
 }
 </script>
