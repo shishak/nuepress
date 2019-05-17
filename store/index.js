@@ -28,7 +28,7 @@ const store = () => new Vuex.Store({
     },
     topicArticles: [],
     topics: null,
-    wordpressAPI: 'https://wp-api.kmr.io/wp-json'
+    wordpressAPI: 'http://34.90.107.208/wp-json'
   },
 
   mutations: {
